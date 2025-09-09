@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button.jsx'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
+import { useState, useEffect, ReactElement } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
@@ -20,9 +20,7 @@ import {
   Star,
   Building,
   Zap,
-  Target,
-  Menu,
-  X
+  Target
 } from 'lucide-react'
 import './App.css'
 
@@ -32,14 +30,33 @@ import kitchenCleaning from './assets/kitchen-cleaning.jpg'
 import dubaiSkyline from './assets/dubai-skyline.jpg'
 import growthChart from './assets/growth-chart.png'
 
-function App() {
-  const [isVisible, setIsVisible] = useState(false)
+interface Service {
+  icon: ReactElement
+  title: string
+  description: string
+  features: string[]
+}
+
+interface Stat {
+  number: string
+  label: string
+  icon: ReactElement
+}
+
+interface InvestmentHighlight {
+  title: string
+  description: string
+  icon: ReactElement
+}
+
+function App(): ReactElement {
+  const [isVisible, setIsVisible] = useState<boolean>(false)
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
 
-  const services = [
+  const services: Service[] = [
     {
       icon: <Droplets className="w-8 h-8" />,
       title: "Grease Trap Maintenance",
@@ -66,14 +83,14 @@ function App() {
     }
   ]
 
-  const stats = [
+  const stats: Stat[] = [
     { number: "2016", label: "Founded", icon: <Building className="w-6 h-6" /> },
     { number: "80+", label: "Active Clients", icon: <Users className="w-6 h-6" /> },
     { number: "25+", label: "Prepaid Contracts", icon: <CheckCircle className="w-6 h-6" /> },
     { number: "$100K", label: "Investment Seeking", icon: <DollarSign className="w-6 h-6" /> }
   ]
 
-  const investmentHighlights = [
+  const investmentHighlights: InvestmentHighlight[] = [
     {
       title: "Proven Business Model",
       description: "Established client base with recurring revenue streams in the growing UAE F&B sector",
@@ -129,10 +146,10 @@ function App() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         
-        <div className={`relative z-10 text-center text-white px-4 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <Badge className="mb-4 bg-green-600/20 text-green-400 border-green-600">
-            Investment Opportunity
-          </Badge>
+        <div className={`relative z-10 text-center text-white px-4 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          <Badge className="mb-4 bg-green-600/20 text-green-400 border-green-600">Investment Opportunity</Badge>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Invest in Green
             <span className="block text-green-400">Innovation</span>
@@ -156,8 +173,8 @@ function App() {
               className="text-white border-white hover:bg-white hover:text-black text-lg px-8 py-4"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Schedule Call
+              <Mail className="w-5 h-5 mr-2" />
+              Contact Us
             </Button>
           </div>
         </div>
@@ -169,15 +186,11 @@ function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="flex justify-center mb-4 text-green-600">
+                <div className="flex justify-center mb-3 text-green-600">
                   {stat.icon}
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-muted-foreground">
-                  {stat.label}
-                </div>
+                <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">{stat.number}</div>
+                <div className="text-muted-foreground text-sm md:text-base">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -190,11 +203,11 @@ function App() {
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-green-100 text-green-800">Our Services</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Advanced Environmental Solutions
+              Environmental Solutions That Work
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive environmental services for the UAE F&B industry, ensuring compliance 
-              and sustainability while generating consistent revenue streams.
+              Comprehensive environmental services for the hospitality and restaurant industry 
+              across the United Arab Emirates.
             </p>
           </div>
 
@@ -299,7 +312,7 @@ function App() {
                 </div>
                 <CardTitle>Renewable Contracts</CardTitle>
                 <CardDescription>
-                  Subscription-based model ensuring consistent cash flow
+                  Recurring monthly and quarterly service agreements
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -307,11 +320,11 @@ function App() {
             <Card className="text-center">
               <CardHeader>
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-8 h-8 text-blue-600" />
+                  <DollarSign className="w-8 h-8 text-blue-600" />
                 </div>
-                <CardTitle>Flexible Service Plans</CardTitle>
+                <CardTitle>Premium Services</CardTitle>
                 <CardDescription>
-                  Customized schedules (2-4 times monthly) based on client needs
+                  High-value specialized cleaning and consultation
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -319,11 +332,11 @@ function App() {
             <Card className="text-center">
               <CardHeader>
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-8 h-8 text-purple-600" />
+                  <TrendingUp className="w-8 h-8 text-purple-600" />
                 </div>
-                <CardTitle>Prepaid Contracts</CardTitle>
+                <CardTitle>Growth Markets</CardTitle>
                 <CardDescription>
-                  25+ clients with annual prepaid agreements for enhanced liquidity
+                  Expanding into new Emirates and service sectors
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -331,11 +344,11 @@ function App() {
             <Card className="text-center">
               <CardHeader>
                 <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-orange-600" />
+                  <Shield className="w-8 h-8 text-orange-600" />
                 </div>
-                <CardTitle>Digital Tracking</CardTitle>
+                <CardTitle>Compliance Consulting</CardTitle>
                 <CardDescription>
-                  Complete documentation with digital monitoring and detailed reports
+                  Advisory services for environmental regulations
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -343,55 +356,56 @@ function App() {
         </div>
       </section>
 
-      {/* Market Opportunity */}
+      {/* Market Section */}
       <section id="market" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <img 
                 src={kitchenCleaning} 
-                alt="Commercial Kitchen Cleaning" 
+                alt="Professional Kitchen Cleaning Service" 
                 className="rounded-lg shadow-lg w-full"
               />
             </div>
+            
             <div>
-              <Badge className="mb-4 bg-green-100 text-green-800">Market Opportunity</Badge>
-              <h2 className="text-4xl font-bold mb-6">
-                Thriving in UAE's Green Economy
+              <Badge className="mb-4 bg-green-100 text-green-800">Market Position</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Leading the Green Revolution
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Leaf className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Building className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Growing Green Economy</h3>
+                    <h3 className="text-xl font-semibold mb-2">Established Since 2016</h3>
                     <p className="text-muted-foreground">
-                      UAE's commitment to sustainability creates expanding market demand for environmental services.
+                      Eight years of proven expertise in environmental services across the UAE market.
                     </p>
                   </div>
                 </div>
-
+                
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Regulatory Compliance</h3>
+                    <h3 className="text-xl font-semibold mb-2">80+ Active Clients</h3>
                     <p className="text-muted-foreground">
-                      Increasing environmental regulations driving service needs across the F&B sector.
+                      Serving restaurants, hotels, and commercial kitchens throughout the Emirates.
                     </p>
                   </div>
                 </div>
-
+                
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Building className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Booming F&B Sector</h3>
+                    <h3 className="text-xl font-semibold mb-2">25+ Prepaid Contracts</h3>
                     <p className="text-muted-foreground">
-                      Rapid growth in restaurants and hotels across the Emirates creates expanding client base.
+                      Strong client retention with predictable revenue streams and growth trajectory.
                     </p>
                   </div>
                 </div>
@@ -407,75 +421,61 @@ function App() {
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-green-100 text-green-800">Get In Touch</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Join the Green Economy Revolution?
+              Ready to Invest in the Future?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Contact Robin Nihad today to request our detailed investment prospectus and 
-              discover how you can be part of UAE's sustainable future.
+              Join EcoTech's mission to create sustainable environmental solutions 
+              while building profitable business growth in the UAE.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center text-2xl">
+                  <MapPin className="w-6 h-6 mr-3 text-green-600" />
+                  Contact Information
+                </CardTitle>
+                <CardDescription>
+                  Get in touch with our investment team to learn more about this opportunity.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <p className="font-semibold">Email</p>
-                    <p className="text-muted-foreground">robenedwan@ecotech.ae</p>
+                    <div className="font-semibold">Email</div>
+                    <div className="text-muted-foreground">robenedwan@ecotech.ae</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-semibold">Phone</p>
-                    <p className="text-muted-foreground">+971522233989</p>
+                    <div className="font-semibold">Phone</div>
+                    <div className="text-muted-foreground">+971 52 223 3989</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <p className="font-semibold">Location</p>
-                    <p className="text-muted-foreground">United Arab Emirates</p>
+                    <div className="font-semibold">Location</div>
+                    <div className="text-muted-foreground">United Arab Emirates</div>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-8 p-6 bg-green-50 rounded-lg">
-                <h4 className="font-semibold text-green-800 mb-2">Investment Highlights</h4>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Officially licensed and accredited
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Established client base since 2016
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Proven revenue model with recurring contracts
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Ready for rapid expansion across Emirates
-                  </li>
-                </ul>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Request Investment Prospectus</CardTitle>
+                <CardTitle>Investment Inquiry</CardTitle>
                 <CardDescription>
                   Fill out the form below and we'll send you detailed information about this investment opportunity.
                 </CardDescription>
@@ -555,13 +555,9 @@ function App() {
               <Leaf className="w-8 h-8 text-green-600" />
               <span className="text-2xl font-bold">EcoTech</span>
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-muted-foreground mb-2">
-                Sustainable Environmental Solutions for the UAE F&B Industry
-              </p>
-              <p className="text-sm text-muted-foreground">
-                © 2024 EcoTech. All rights reserved. Licensed and accredited by UAE municipal authorities.
-              </p>
+            <div className="text-muted-foreground text-center md:text-right">
+              <p>&copy; 2024 EcoTech UAE. All rights reserved.</p>
+              <p className="text-sm">Environmental services for a sustainable future.</p>
             </div>
           </div>
         </div>
@@ -571,4 +567,3 @@ function App() {
 }
 
 export default App
-

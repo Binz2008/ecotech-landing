@@ -12,16 +12,17 @@ export default {
         ['@babel/preset-env', { targets: { node: 'current' } }],
         ['@babel/preset-react', { runtime: 'automatic' }]
       ]
-    }]
+    }],
+    '^.+\\.(ts|tsx)$': 'ts-jest'
   },
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    '!src/main.jsx',
-    '!src/**/*.test.{js,jsx}',
+    'src/**/*.{js,jsx,ts,tsx}',
+    '!src/main.tsx',
+    '!src/**/*.test.{js,jsx,ts,tsx}',
     '!src/setupTests.js'
   ],
   testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.{js,jsx}',
-    '<rootDir>/src/**/*.{test,spec}.{js,jsx}'
+    '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+    '<rootDir>/src/**/*.{test,spec}.{js,jsx,ts,tsx}'
   ]
 };
