@@ -1,33 +1,93 @@
 {
   "name": "EcoTech UAE - Environmental Investment Opportunity",
   "short_name": "EcoTech UAE",
-  "description": "$100K investment opportunity in UAE environmental services sector",
+  "description": "$100K investment opportunity in UAE environmental services sector with proven business model and growth potential",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#0f1115",
   "theme_color": "#22c55e",
   "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon",
+      "purpose": "any"
     },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "categories": ["business", "finance", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "EcoTech UAE Investment Dashboard"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "EcoTech UAE Mobile Experience"
+    }
+  ],
+  "categories": ["business", "finance", "productivity", "investment"],
   "lang": "en",
-  "dir": "ltr"
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "shortcuts": [
+    {
+      "name": "Investment Details",
+      "short_name": "Investment",
+      "description": "View detailed investment information",
+      "url": "/#investment",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "48x48",
+          "type": "image/x-icon"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch for investment inquiries",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "48x48",
+          "type": "image/x-icon"
+        }
+      ]
+    }
+  ]
 }
 
