@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from '../App';
+import HomePage from '../HomePage';
 
 // Mock window.open for WhatsApp test
 const mockWindowOpen = jest.fn();
@@ -17,7 +17,7 @@ describe('Investment Form Integration', () => {
   });
 
   test('renders complete investment form', () => {
-    render(<App />);
+    render(<HomePage />);
     
     // Check for investment form elements
     expect(screen.getByPlaceholderText('Full Name')).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('Investment Form Integration', () => {
 
   test('allows user to fill out investment form fields', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<HomePage />);
     
     const nameInput = screen.getByPlaceholderText('Full Name');
     const emailInput = screen.getByPlaceholderText('Email Address');
@@ -49,7 +49,7 @@ describe('Investment Form Integration', () => {
   });
 
   test('form has correct Netlify attributes for submission', () => {
-    render(<App />);
+    render(<HomePage />);
     
     const form = screen.getByRole('form', { hidden: true });
     expect(form).toHaveAttribute('name', 'investor-contact');
@@ -64,7 +64,7 @@ describe('Investment Form Integration', () => {
 
   test('WhatsApp button opens correct URL', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<HomePage />);
     
     const whatsappButton = screen.getByRole('button', { name: /whatsapp/i });
     await user.click(whatsappButton);
@@ -74,7 +74,7 @@ describe('Investment Form Integration', () => {
 
   test('form validation works for required fields', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<HomePage />);
     
     const submitButton = screen.getByRole('button', { name: /send investment inquiry/i });
     const nameInput = screen.getByPlaceholderText('Full Name');
@@ -91,18 +91,24 @@ describe('Investment Form Integration', () => {
   });
 
   test('navigation links have correct href attributes', () => {
-    render(<App />);
+    render(<HomePage />);
     
-    // Check navigation links exist with correct href attributes
+    // Check navigation links exist with correct href attributes (in navigation bar specifically)
     expect(screen.getByRole('link', { name: /services/i })).toHaveAttribute('href', '#services');
     expect(screen.getByRole('link', { name: /investment/i })).toHaveAttribute('href', '#investment');
     expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '#market');
-    expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '#contact');
+    
+    // Check for the navigation contact link specifically
+    const navContactLink = screen.getAllByRole('link', { name: /contact/i }).find(
+      link => link.getAttribute('href') === '#contact'
+    );
+    expect(navContactLink).toBeInTheDocument();
+    expect(navContactLink).toHaveAttribute('href', '#contact');
   });
 
   test('investment details button scrolls to investment section', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(<HomePage />);
     
     // Find the "View Investment Details" button
     const investmentButton = screen.getByRole('button', { name: /view investment details/i });
@@ -121,7 +127,7 @@ describe('Investment Form Integration', () => {
   });
 
   test('investment form displays correct investment amount', () => {
-    render(<App />);
+    render(<HomePage />);
     
     // Check that $100,000 Investment is displayed
     expect(screen.getByText('$100,000 Investment')).toBeInTheDocument();
@@ -129,7 +135,7 @@ describe('Investment Form Integration', () => {
   });
 
   test('form includes proper security measures', () => {
-    render(<App />);
+    render(<HomePage />);
     
     // Check for honeypot field (anti-spam)
     const honeypotField = screen.getByLabelText(/don't fill this out if you're human/i);
@@ -137,5 +143,19 @@ describe('Investment Form Integration', () => {
     
     // Check that honeypot is hidden
     expect(honeypotField.closest('p')).toHaveAttribute('hidden');
+  });
+
+  test('privacy policy link is present in form and footer', () => {
+    render(<HomePage />);
+    
+    // Check for privacy policy links
+    const privacyLinks = screen.getAllByRole('link', { name: /privacy policy/i });
+    expect(privacyLinks.length).toBeGreaterThan(0);
+    
+    // At least one should link to /privacy
+    const privacyPolicyLink = privacyLinks.find(link => 
+      link.getAttribute('href') === '/privacy'
+    );
+    expect(privacyPolicyLink).toBeInTheDocument();
   });
 });
