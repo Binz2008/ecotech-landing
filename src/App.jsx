@@ -28,14 +28,12 @@ import './App.css'
 
 // Import assets
 import heroBg from './assets/hero-bg.jpg'
-import greenTech from './assets/green-tech.jpg'
 import kitchenCleaning from './assets/kitchen-cleaning.jpg'
 import dubaiSkyline from './assets/dubai-skyline.jpg'
 import growthChart from './assets/growth-chart.png'
 
 function App() {
   const [isVisible, setIsVisible] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
