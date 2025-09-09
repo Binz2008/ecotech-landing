@@ -2,14 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- Favicon and PWA Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#22c55e" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#22c55e" />
+    <meta name="application-name" content="EcoTech UAE" />
+    <meta name="apple-mobile-web-app-title" content="EcoTech UAE" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#22c55e" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- SEO Meta Tags -->
     <title>EcoTech - Sustainable Environmental Solutions | Investment Opportunity</title>
     <meta name="description" content="Join EcoTech's exclusive $100K investment opportunity in UAE's growing environmental services sector. Established since 2016 with 80+ clients. Contact +971522233989." />
+    <meta name="keywords" content="environmental services, UAE investment, sustainable business, grease trap maintenance, cooking oil recycling, Dubai, Abu Dhabi" />
+    <meta name="author" content="EcoTech UAE" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ecotech-uae.com/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -27,7 +46,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
     
     <!-- Plausible Analytics -->
     <script defer data-domain="ecotech-uae.com" src="https://plausible.io/js/script.js"></script>
