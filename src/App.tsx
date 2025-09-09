@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './i18n' // Initialize i18n
 import HomePage from './HomePage'
 import PrivacyPolicy from './components/PrivacyPolicy'
 

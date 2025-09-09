@@ -94,12 +94,12 @@ describe('Investment Form Integration', () => {
     render(<HomePage />);
     
     // Check navigation links exist with correct href attributes (in navigation bar specifically)
-    expect(screen.getByRole('link', { name: /services/i })).toHaveAttribute('href', '#services');
-    expect(screen.getByRole('link', { name: /investment/i })).toHaveAttribute('href', '#investment');
-    expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '#market');
+    expect(screen.getByRole('link', { name: 'nav.services' })).toHaveAttribute('href', '#services');
+    expect(screen.getByRole('link', { name: 'nav.investment' })).toHaveAttribute('href', '#investment');
+    expect(screen.getByRole('link', { name: 'nav.about' })).toHaveAttribute('href', '#market');
     
     // Check for the navigation contact link specifically
-    const navContactLink = screen.getAllByRole('link', { name: /contact/i }).find(
+    const navContactLink = screen.getAllByRole('link', { name: 'nav.contact' }).find(
       link => link.getAttribute('href') === '#contact'
     );
     expect(navContactLink).toBeInTheDocument();
@@ -110,8 +110,8 @@ describe('Investment Form Integration', () => {
     const user = userEvent.setup();
     render(<HomePage />);
     
-    // Find the "View Investment Details" button
-    const investmentButton = screen.getByRole('button', { name: /view investment details/i });
+    // Find the "View Investment Details" button (now using translation key)
+    const investmentButton = screen.getByRole('button', { name: 'hero.viewInvestment' });
     
     // Mock getElementById to return an element
     const mockElement = { scrollIntoView: jest.fn() };
@@ -129,7 +129,7 @@ describe('Investment Form Integration', () => {
   test('investment form displays correct investment amount', () => {
     render(<HomePage />);
     
-    // Check that $100,000 Investment is displayed
+    // Check that $100,000 Investment is displayed (this text might not be translated yet)
     expect(screen.getByText('$100,000 Investment')).toBeInTheDocument();
     expect(screen.getByText(/strategic capital allocation/i)).toBeInTheDocument();
   });

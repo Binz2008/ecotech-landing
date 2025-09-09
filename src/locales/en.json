@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "services": "Services",
+    "investment": "Investment",
+    "about": "About",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Investment Opportunity",
+    "title": "Invest in Green",
+    "titleHighlight": "Innovation",
+    "subtitle": "Join EcoTech's exclusive business opportunity in UAE's growing environmental services sector. Sustainable solutions generating sustainable profits.",
+    "viewInvestment": "View Investment Details",
+    "contactUs": "Contact Us"
+  },
+  "stats": {
+    "founded": "Founded",
+    "activeClients": "Active Clients",
+    "prepaidContracts": "Prepaid Contracts",
+    "investmentSeeking": "Investment Seeking"
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "Environmental Solutions That Work",
+    "subtitle": "Comprehensive environmental services for the hospitality and restaurant industry across the United Arab Emirates.",
+    "greaseTrapping": {
+      "title": "Grease Trap Maintenance",
+      "description": "Professional cleaning services ensuring regulatory compliance for commercial kitchens",
+      "features": [
+        "Regular maintenance schedules",
+        "Compliance documentation",
+        "Emergency services"
+      ]
+    },
+    "oilRecycling": {
+      "title": "Used Cooking Oil Recycling",
+      "description": "Sustainable disposal and recycling solutions turning waste into valuable resources",
+      "features": [
+        "Eco-friendly collection",
+        "Certified recycling process",
+        "Revenue sharing program"
+      ]
+    },
+    "bioremediation": {
+      "title": "Bioremediation with GES System",
+      "description": "Certified biological treatment for comprehensive waste management solutions",
+      "features": [
+        "Advanced biotechnology",
+        "Environmental restoration",
+        "Long-term sustainability"
+      ]
+    },
+    "pressureCleaning": {
+      "title": "High-Pressure Cleaning",
+      "description": "Advanced hot water cleaning technology for commercial kitchen deep cleaning",
+      "features": [
+        "State-of-the-art equipment",
+        "Thorough sanitization",
+        "Quick turnaround"
+      ]
+    }
+  },
+  "investment": {
+    "badge": "Investment Opportunity",
+    "title": "Your Gateway to Sustainable Profits",
+    "subtitle": "EcoTech offers a strategic investment opportunity in UAE's growing environmental services sector with proven results and solid expansion plans.",
+    "amount": "$100,000 Investment",
+    "amountDescription": "Strategic capital allocation for operations, equipment, digital platform, marketing, and working capital to maximize growth potential.",
+    "negotiableTerms": "Negotiable equity terms available",
+    "highlights": {
+      "provenModel": {
+        "title": "Proven Business Model",
+        "description": "Established client base with recurring revenue streams in the growing UAE F&B sector"
+      },
+      "compliance": {
+        "title": "Regulatory Compliance",
+        "description": "Officially licensed and accredited by UAE municipal authorities"
+      },
+      "marketOpportunity": {
+        "title": "Market Opportunity",
+        "description": "UAE's commitment to sustainability creates expanding market demand"
+      },
+      "scalableOps": {
+        "title": "Scalable Operations",
+        "description": "Infrastructure in place for rapid growth across all Emirates"
+      }
+    }
+  },
+  "revenue": {
+    "badge": "Revenue Model",
+    "title": "Sustainable Revenue Streams",
+    "renewableContracts": {
+      "title": "Renewable Contracts",
+      "description": "Recurring monthly and quarterly service agreements"
+    },
+    "premiumServices": {
+      "title": "Premium Services",
+      "description": "High-value specialized cleaning and consultation"
+    },
+    "growthMarkets": {
+      "title": "Growth Markets",
+      "description": "Expanding into new Emirates and service sectors"
+    },
+    "complianceConsulting": {
+      "title": "Compliance Consulting",
+      "description": "Advisory services for environmental regulations"
+    }
+  },
+  "market": {
+    "badge": "Market Position",
+    "title": "Leading the Green Revolution",
+    "established": {
+      "title": "Established Since 2016",
+      "description": "Eight years of proven expertise in environmental services across the UAE market."
+    },
+    "clients": {
+      "title": "80+ Active Clients",
+      "description": "Serving restaurants, hotels, and commercial kitchens throughout the Emirates."
+    },
+    "contracts": {
+      "title": "25+ Prepaid Contracts",
+      "description": "Strong client retention with predictable revenue streams and growth trajectory."
+    }
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Ready to Invest in the Future?",
+    "subtitle": "Join EcoTech's mission to create sustainable environmental solutions while building profitable business growth in the UAE.",
+    "contactInfo": "Contact Information",
+    "contactSubtitle": "Get in touch with our investment team to learn more about this opportunity.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "uae": "United Arab Emirates",
+    "form": {
+      "title": "Investment Inquiry",
+      "subtitle": "Fill out the form below and we'll send you detailed information about this investment opportunity.",
+      "namePlaceholder": "Full Name",
+      "emailPlaceholder": "Email Address",
+      "phonePlaceholder": "Phone Number",
+      "messagePlaceholder": "Tell us about your investment interests...",
+      "privacyNotice": "By submitting this form, you agree to our Privacy Policy. Your information will be handled confidentially and used only for investment inquiry purposes.",
+      "sendInquiry": "Send Investment Inquiry",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 EcoTech UAE. All rights reserved.",
+    "tagline": "Environmental services for a sustainable future.",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "close": "Close"
+  }
+}

@@ -1,9 +1,11 @@
 import { useState, useEffect, ReactElement } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { 
   Leaf, 
   Recycle, 
@@ -50,6 +52,7 @@ interface InvestmentHighlight {
 }
 
 function HomePage(): ReactElement {
+  const { t } = useTranslation()
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
   useEffect(() => {
@@ -84,10 +87,10 @@ function HomePage(): ReactElement {
   ]
 
   const stats: Stat[] = [
-    { number: "2016", label: "Founded", icon: <Building className="w-6 h-6" /> },
-    { number: "80+", label: "Active Clients", icon: <Users className="w-6 h-6" /> },
-    { number: "25+", label: "Prepaid Contracts", icon: <CheckCircle className="w-6 h-6" /> },
-    { number: "$100K", label: "Investment Seeking", icon: <DollarSign className="w-6 h-6" /> }
+    { number: "2016", label: t('stats.founded'), icon: <Building className="w-6 h-6" /> },
+    { number: "80+", label: t('stats.activeClients'), icon: <Users className="w-6 h-6" /> },
+    { number: "25+", label: t('stats.prepaidContracts'), icon: <CheckCircle className="w-6 h-6" /> },
+    { number: "$100K", label: t('stats.investmentSeeking'), icon: <DollarSign className="w-6 h-6" /> }
   ]
 
   const investmentHighlights: InvestmentHighlight[] = [
@@ -123,17 +126,20 @@ function HomePage(): ReactElement {
             <span className="text-2xl font-bold text-foreground">EcoTech</span>
           </div>
           <div className="hidden md:flex space-x-6">
-            <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Services</a>
-            <a href="#investment" className="text-muted-foreground hover:text-foreground transition-colors">Investment</a>
-            <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">{t('nav.services')}</a>
+            <a href="#investment" className="text-muted-foreground hover:text-foreground transition-colors">{t('nav.investment')}</a>
+            <a href="#market" className="text-muted-foreground hover:text-foreground transition-colors">{t('nav.about')}</a>
+            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">{t('nav.contact')}</a>
           </div>
-          <Button 
-            className="bg-green-600 hover:bg-green-700"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Get Started
-          </Button>
+          <div className="flex items-center space-x-3">
+            <LanguageSwitcher />
+            <Button 
+              className="bg-green-600 hover:bg-green-700"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              {t('nav.getStarted')}
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -149,14 +155,13 @@ function HomePage(): ReactElement {
         <div className={`relative z-10 text-center text-white px-4 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <Badge className="mb-4 bg-green-600/20 text-green-400 border-green-600">Investment Opportunity</Badge>
+          <Badge className="mb-4 bg-green-600/20 text-green-400 border-green-600">{t('hero.badge')}</Badge>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Invest in Green
-            <span className="block text-green-400">Innovation</span>
+            {t('hero.title')}
+            <span className="block text-green-400">{t('hero.titleHighlight')}</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-200 px-4">
-            Join EcoTech's exclusive business opportunity in UAE's growing environmental services sector. 
-            Sustainable solutions generating sustainable profits.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -165,7 +170,7 @@ function HomePage(): ReactElement {
               onClick={() => document.getElementById('investment')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <DollarSign className="w-5 h-5 mr-2" />
-              View Investment Details
+              {t('hero.viewInvestment')}
             </Button>
             <Button 
               size="lg" 
@@ -174,7 +179,7 @@ function HomePage(): ReactElement {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="w-5 h-5 mr-2" />
-              Contact Us
+              {t('hero.contactUs')}
             </Button>
           </div>
         </div>
@@ -563,12 +568,12 @@ function HomePage(): ReactElement {
               <span className="text-2xl font-bold">EcoTech</span>
             </div>
             <div className="text-muted-foreground text-center md:text-right">
-              <p>&copy; 2024 EcoTech UAE. All rights reserved.</p>
-              <p className="text-sm">Environmental services for a sustainable future.</p>
+              <p>{t('footer.copyright')}</p>
+              <p className="text-sm">{t('footer.tagline')}</p>
               <div className="mt-2 space-x-4">
-                <a href="/privacy" className="text-sm hover:text-foreground transition-colors">Privacy Policy</a>
+                <a href="/privacy" className="text-sm hover:text-foreground transition-colors">{t('footer.privacyPolicy')}</a>
                 <span className="text-sm">•</span>
-                <a href="mailto:robenedwan@ecotech.ae" className="text-sm hover:text-foreground transition-colors">Contact</a>
+                <a href="mailto:robenedwan@ecotech.ae" className="text-sm hover:text-foreground transition-colors">{t('footer.contact')}</a>
               </div>
             </div>
           </div>
