@@ -6,6 +6,7 @@
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-6-purple?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-cyan?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![Raspberry Pi](https://img.shields.io/badge/Raspberry_Pi-Support-red?style=for-the-badge&logo=raspberrypi)](https://www.raspberrypi.org/)
 
 ## 🌟 **Live Website**
 
@@ -25,6 +26,7 @@ EcoTech is a professional investment landing page designed to attract investors 
 - 🔒 **Production-ready** - Security headers and SEO optimization
 - 📧 **Lead capture** - Working contact forms via Netlify Forms
 - 💬 **WhatsApp integration** - Direct communication channel
+- 🥧 **Raspberry Pi support** - Self-hosting option for local development
 
 ---
 
@@ -40,6 +42,7 @@ EcoTech is a professional investment landing page designed to attract investors 
 
 ### **Deployment**
 - **Netlify** - Static site hosting with forms
+- **Raspberry Pi** - Self-hosting option for local development
 - **Custom Domain Ready** - Professional branding
 - **CDN Optimized** - Global content delivery
 - **HTTPS Enabled** - Secure connections
@@ -80,6 +83,9 @@ pnpm run preview
 
 # Lint code
 pnpm run lint
+
+# Deploy to Raspberry Pi
+./deploy-to-raspberry.sh [IP-ADDRESS] [USERNAME]
 ```
 
 ---
@@ -104,6 +110,10 @@ ecotech-landing/
 │   ├── index.css         # Base styles
 │   └── main.jsx          # Application entry point
 ├── dist/                 # Production build output
+├── RASPBERRY_PI_DEPLOYMENT.md  # Raspberry Pi setup guide
+├── deploy-to-raspberry.sh      # Deployment script
+├── nginx-ecotech.conf          # Nginx configuration
+├── ecotech.service             # Systemd service file
 ├── package.json          # Dependencies and scripts
 ├── vite.config.js        # Vite configuration
 ├── tailwind.config.js    # Tailwind CSS configuration
@@ -199,6 +209,21 @@ ecotech-landing/
    - Add custom domain in Netlify settings
    - Update DNS records at your domain provider
 
+### **Raspberry Pi Deployment**
+
+1. **Prerequisites**:
+   - Raspberry Pi with Raspberry Pi OS installed
+   - Node.js and npm installed
+   - Nginx installed
+
+2. **Deploy using script**:
+   ```bash
+   ./deploy-to-raspberry.sh 192.168.1.100 pi
+   ```
+
+3. **Manual setup**:
+   - See [RASPBERRY_PI_DEPLOYMENT.md](./RASPBERRY_PI_DEPLOYMENT.md) for detailed instructions
+
 ### **Other Deployment Options**
 - **Vercel** - Zero-config deployment
 - **GitHub Pages** - Free static hosting
@@ -269,4 +294,3 @@ This project is proprietary and confidential. All rights reserved.
 ---
 
 **Built with ❤️ for sustainable business growth in the UAE** 🇦🇪
-
