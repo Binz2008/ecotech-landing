@@ -1,0 +1,18 @@
+[Unit]
+Description=Eco Technology Website Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/ecotech-landing
+ExecStart=/usr/bin/npm run dev
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ecotech-website
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
