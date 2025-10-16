@@ -1,8 +1,28 @@
-import { Phone, Mail, MapPin, Shield, Award } from 'lucide-react'
+import { Phone, Mail, MapPin, Shield, Award, Eye } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import logo from '../assets/logo_concept_1.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [visitorCount, setVisitorCount] = useState(0)
+
+  useEffect(() => {
+    // Get visitor count from localStorage
+    const storedCount = localStorage.getItem('ecotech_visitor_count')
+    const lastVisit = localStorage.getItem('ecotech_last_visit')
+    const today = new Date().toDateString()
+    
+    if (lastVisit !== today) {
+      // New visit - increment counter
+      const newCount = storedCount ? parseInt(storedCount) + 1 : 1
+      localStorage.setItem('ecotech_visitor_count', newCount.toString())
+      localStorage.setItem('ecotech_last_visit', today)
+      setVisitorCount(newCount)
+    } else {
+      // Same day visit - just display count
+      setVisitorCount(storedCount ? parseInt(storedCount) : 0)
+    }
+  }, [])
 
   const quickLinks = [
     { name: 'Home', href: '#home' },
@@ -147,6 +167,11 @@ const Footer = () => {
               <span>Municipality Approved</span>
               <span>•</span>
               <span>UAE Licensed</span>
+              <span>•</span>
+              <div className="flex items-center space-x-2">
+                <Eye className="h-4 w-4 text-green-400" />
+                <span className="text-green-400 font-medium">{visitorCount.toLocaleString()} Visitors</span>
+              </div>
             </div>
           </div>
         </div>
